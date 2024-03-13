@@ -25,7 +25,7 @@ aggregate_features = calculate_aggregate_features(features, y)
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.layout = dbc.Container([
     dbc.Row([
-        dbc.Col(html.Img(src='download.jpg', height='100px'), width={"size": 6, "offset": 3}),  # Adjust 'height' as needed and center the logo
+        dbc.Col(html.Img(src='../download.jpg', height='100px'), width={"size": 6, "offset": 3}),  # Adjust 'height' as needed and center the logo
     ], justify="center"),  # Center the logo row
     dbc.Row([
         dbc.Col(dbc.Card([
