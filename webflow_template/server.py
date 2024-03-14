@@ -8,6 +8,9 @@ def index():
 @app.route('/datasets.html')
 def datasets():
     return render_template('datasets.html')
+@app.route('/f1models.html')
+def f1models():
+    return render_template('f1models.html')
 
 
 if __name__ == '__main__':
