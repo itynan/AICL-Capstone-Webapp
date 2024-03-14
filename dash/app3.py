@@ -13,7 +13,7 @@ import numpy as np
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Load the dataset and fit the model
-features, y = load_and_prepare_data('dash/demo_datasets/password_dataset.csv')
+features, y = load_and_prepare_data('demo_datasets/password_dataset.csv')
 gmm_model = fit_gmm_model(features)
 
 # Define the layout of the app
