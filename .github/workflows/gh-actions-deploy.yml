@@ -1,6 +1,6 @@
 ---
 
-name: Deploy to AWS
+name: auto-Deploy to AWS
 on:
   push:
     branches:
