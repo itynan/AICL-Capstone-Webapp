@@ -13,7 +13,7 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -v -p ${{ runner.temp }}/.ssh
-          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/aicybr
+          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/aicyber
           chmod 600 ${{ runner.temp }}/.ssh/aicyber
           ssh-keyscan -v -H 3.15.32.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
