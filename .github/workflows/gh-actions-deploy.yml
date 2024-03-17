@@ -18,4 +18,4 @@ jobs:
           ssh-keyscan -v -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
         run: ssh -v -i ${{ runner.temp }}/.ssh/aicyber -o "StrictHostKeyChecking=no"
-          iliya@18.216.119.33 'bash ~/deploy.sh'
+          root@18.216.119.33 'bash ~/deploy.sh'
