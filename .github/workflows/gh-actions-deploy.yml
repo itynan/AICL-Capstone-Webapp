@@ -1,20 +1,21 @@
-#AWS deployment
 name: Deploy to EC2
 
 on:
   push:
     branches:
       - prod
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up SSH key
         run: |
-          mkdir -v -p /home/runner/.ssh
-          echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 18.216.119.33 >> ~/.ssh/known_hosts
+          mkdir -v -p ${{ runner.temp }}/.ssh
+          echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" > ${{ runner.temp }}/.ssh/id_rsa
+          chmod 600 ${{ runner.temp }}/.ssh/id_rsa
+          ssh-keyscan -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
 
       - name: Deploy to EC2
-        run: ssh -i ~/.ssh/id_rsa ec2-user@18.216.119.33 'bash ~/deploy.sh'
+        run: ssh -i ${{ runner.temp }}/.ssh/id_rsa -o "StrictHostKeyChecking no" ec2-user@18.216.119.33 'bash ~/deploy.sh'
