@@ -1,10 +1,10 @@
+#AWS deployment
 name: Deploy to EC2
 
 on:
   push:
     branches:
       - prod
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
