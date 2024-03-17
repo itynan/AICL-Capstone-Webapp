@@ -14,9 +14,8 @@ jobs:
       - name: Set up SSH key
         run: mkdir -v -p ${{ runner.temp }}/.ssh
       - name: SSH key passthru
-        run: echo "${{ secrets.AICBERLABS }}" >
-          ${{ runner.temp }}/.ssh/id_rsa
-          chmod 600 ${{ runner.temp }}/.ssh/id_rsa
+        run: echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/id_rsa
+          chmod 400 ${{ runner.temp }}/.ssh/id_rsa
           ssh-keyscan -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
         run: ssh -i ${{ runner.temp }}/.ssh/id_rsa -o
