@@ -12,8 +12,7 @@ jobs:
 
     steps:
       - name: Set up SSH key
-        run: echo "starting run" |
-          mkdir -v -p ${{ runner.temp }}/.ssh
+        run: echo "s run" | mkdir -v -p ${{ runner.temp }}/.ssh
           echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" >
           ${{ runner.temp }}/.ssh/id_rsa
           chmod 600 ${{ runner.temp }}/.ssh/id_rsa
