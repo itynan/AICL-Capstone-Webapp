@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Set up SSH key
         run: |
-          mkdir -v -p ~/.ssh
+          mkdir -v -p /home/runner/.ssh
           echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H 18.216.119.33 >> ~/.ssh/known_hosts
