@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Set up SSH key
         run: mkdir -v -p ${{ runner.temp }}/.ssh
+      - name: chmod perm
+        run: chmod 600 ${{ runner.temp }}/.ssh/id_rsa
       - name: SSH key pass
         run: chmod 600 ${{ runner.temp }}/.ssh/id_rsa
           echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/id_rsa
