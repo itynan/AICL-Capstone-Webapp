@@ -15,7 +15,7 @@ jobs:
         run: mkdir -v -p ${{ runner.temp }}/.ssh
           echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" >
       - name: SSH key passthru   
-          ${{ runner.temp }}/.ssh/id_rsa
+        run:  ${{ runner.temp }}/.ssh/id_rsa
           chmod 600 ${{ runner.temp }}/.ssh/id_rsa
           ssh-keyscan -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
           echo "endeding run"
