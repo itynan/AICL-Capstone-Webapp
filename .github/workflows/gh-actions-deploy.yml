@@ -18,4 +18,4 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }}
-          ec2-user@your-ec2-ip-address 'bash -s' < deploy_script.sh
+          ec2-user@3.15.32.33 'bash -s' < deploy_script.sh
