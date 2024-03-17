@@ -1,21 +1,21 @@
 ---
 
-name: Deploy to EC2
-
+name: auto-Deploy to AWS
 on:
   push:
     branches:
-      - main
+      - prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to EC2
+      - name: Set up SSH key
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }}
-          ec2-user@3.15.32.33 'bash -s' < deploy_script.sh
+          mkdir -v -p ${{ runner.temp }}/.ssh
+          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/aicyber
+          chmod 600 ${{ runner.temp }}/.ssh/aicyber
+          ssh-keyscan -v -H 3.15.32.33 >> ${{ runner.temp }}/.ssh/known_hosts
+      - name: Deploy to EC2
+        run: ssh -v -i ${{ runner.temp }}/.ssh/aicyber -o "StrictHostKeyChecking=no"
+          ec2-user@3.15.32.33 'bash ~/deploy.sh'
