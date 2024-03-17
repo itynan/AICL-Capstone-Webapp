@@ -20,6 +20,6 @@ jobs:
           chmod 600 ${{ runner.temp }}/.ssh/id_rsa
           ssh-keyscan -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
-        run: echo "starting run2" ssh -i ${{ runner.temp }}/.ssh/id_rsa -o
+        run: ssh -i ${{ runner.temp }}/.ssh/id_rsa -o
           "StrictHostKeyChecking no" ec2-user@18.216.119.33
-          'bash ~/deploy.sh' echo "ending run2"
+          'bash ~/deploy.sh'
