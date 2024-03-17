@@ -13,9 +13,9 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -v -p ${{ runner.temp }}/.ssh
-          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/test
-          chmod 600 ${{ runner.temp }}/.ssh/test
+          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/aisec
+          chmod 600 ${{ runner.temp }}/.ssh/aisec
           ssh-keyscan -v -H 18.216.119.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
-        run: ssh -v -i ${{ runner.temp }}/.ssh/test -o "StrictHostKeyChecking=no"
+        run: ssh -v -i ${{ runner.temp }}/.ssh/aisec -o "StrictHostKeyChecking=no"
           ec2-user@18.216.119.33 'bash ~/deploy.sh'
