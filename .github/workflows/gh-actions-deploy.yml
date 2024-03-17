@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - prod
-#running with ecdsa
+#terminal login key
 jobs:
   deploy:
     runs-on: ubuntu-latest
