@@ -13,7 +13,6 @@ jobs:
     steps:
       - name: Set up SSH key
         run: mkdir -v -p ${{ runner.temp }}/.ssh
-
       - name: SSH key passthru
         run: echo "${{ secrets.AWSCAPSTONEPRIVKEY }}" >
           ${{ runner.temp }}/.ssh/id_rsa
