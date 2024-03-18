@@ -1,4 +1,5 @@
 ---
+#test
 name: 'Deploy to EC2'
 description: 'Deploys files to an AWS EC2 instance'
 inputs:
