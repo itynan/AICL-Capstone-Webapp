@@ -26,7 +26,7 @@ runs:
   steps:
     - name: Copy files to EC2
       run: |
-        scp -i ${{ inputs.AICYBERLABS }} -P '22' -r './pythonProject18' 'ec2-user@3.15.32.33:/var/www/myapp'
+        scp -i ${{ inputs.AICYBERLABS }} -P '22' -r './' 'ec2-user@3.15.32.33:/var/www/myapp'
       shell: bash
 
     - name: Execute remote commands
