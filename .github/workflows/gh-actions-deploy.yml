@@ -1,21 +1,25 @@
 ---
 
-name: auto-Deploy to AWS
+name: deploy to aws
 on:
   push:
     branches:
       - prod
-#terminal login key3
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up SSH key
-        run: |
-          mkdir -v -p ${{ runner.temp }}/.ssh
-          echo "${{ secrets.AICBERLABS }}" > ${{ runner.temp }}/.ssh/id_rsa
+        run: mkdir -v -p ${{ runner.temp }}/.ssh
+
+      - name: SSH key passthru
+        run: echo "${{ secrets.AICYBERLABS }}" >
+          ${{ runner.temp }}/.ssh/id_rsa
           chmod 600 ${{ runner.temp }}/.ssh/id_rsa
-          ssh-keyscan -v -H 3.15.32.33 >> ${{ runner.temp }}/.ssh/known_hosts
+          ssh-keyscan -H 3.15.32.33 >> ${{ runner.temp }}/.ssh/known_hosts
       - name: Deploy to EC2
-        run: ssh -v -i ${{ runner.temp }}/.ssh/id_rsa -o "StrictHostKeyChecking=no"
-          ec2-user@3.15.32.33 'bash ~/deploy.sh'
+        run: echo "starting run2" ssh -i ${{ runner.temp }}/.ssh/id_rsa -o
+          "StrictHostKeyChecking no" ec2-user@3.15.32.33
+          'bash ~/deploy.sh' echo "ending run2"
