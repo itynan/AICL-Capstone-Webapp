@@ -1,5 +1,5 @@
 #deploy shell
-source ~/myenv/bin/activate
+source /home/ec2-user/myenv/bin/activate
 pip install -r requirements.txt
 
 # Start your Dash apps
