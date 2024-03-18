@@ -36,10 +36,10 @@ jobs:
       - name: Restart application
         uses: itynan/ssh-action@prod
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: ${{ 3.15.32.33 }}
+          username: ${{ ec2-user }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
+          port: ${{ 22 }}
           script: |
             /home/ec2-user/myenv/bin/activate
             source venv/bin/activate
