@@ -34,7 +34,7 @@ jobs:
           target: "/home/ec2-user/myenv/bin/activate"
 
       - name: Restart application
-        uses: itynan/ssh-action@master
+        uses: itynan/AiCyberLabs@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
