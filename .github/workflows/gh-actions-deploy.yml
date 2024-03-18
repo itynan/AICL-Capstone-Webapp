@@ -1,6 +1,5 @@
----
+name: Deploy to EC2
 
-name: deploy to aws
 on:
   push:
     branches:
@@ -11,15 +10,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up SSH key
-        run: mkdir -v -p ${{ runner.temp }}/.ssh
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: SSH key passthru
-        run: echo "${{ secrets.AICYBERLABS }}" >
-          ${{ runner.temp }}/.ssh/id_rsa
-          chmod 600 ${{ runner.temp }}/.ssh/id_rsa
-          ssh-keyscan -H 3.15.32.33 >> ${{ runner.temp }}/.ssh/known_hosts
-      - name: Deploy to EC2
-        run: echo "starting run2" ssh -i ${{ runner.temp }}/.ssh/id_rsa -o
-          "StrictHostKeyChecking no" ec2-user@3.15.32.33
-          'bash ~/deploy.sh' echo "ending run2"
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Copy files to EC2
+        uses: itynan/scp-action@prod
+        with:
+          host: ${{ 3.15.32.33 }}
+          username: ${{ ec2-user }}
+          key: ${{ secrets.AICYBERLABS }}
+          port: ${{ 22 }}
+          source: "."
+          target: "/home/ec2-user/myenv/bin/activate"
+
+      - name: Restart application
+        uses: itynan/ssh-action@prod
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            /home/ec2-user/myenv/bin/activate
+            source venv/bin/activate
+            # Restart your application here, e.g.:
+            # For Flask:
+            #   pkill -f flask
+            #   nohup flask run --host=0.0.0.0 &
+            # For Gunicorn:
+            #   pkill gunicorn
+            #   nohup gunicorn your_app:app -b 0.0.0.0:8000 &
