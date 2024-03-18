@@ -31,7 +31,7 @@ jobs:
         key: ${{ secrets.AICYBERLABS }}
         port: '22'
         source: "."
-        target: "/home/ec2-user/myenv/bin/activate"
+        target: "/var/www/myapp"
 
     - name: Execute remote SSH commands
       uses: itynan/AiCyberLabs@prod
@@ -41,7 +41,7 @@ jobs:
         key: ${{ secrets.AICYBERLABS }}
         port: '22'
         script: |
-          cd /path/to/remote/directory
+          cd /home/ec2-user/venv/bin/activate
           # Activate the virtual environment
           source venv/bin/activate
           # Restart the application (Adjust the command based on your setup)
