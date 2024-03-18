@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Copy files to EC2
-        uses: itynan/scp-action@prod
+        uses: itynan/AiCyberLabs@prod
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
