@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Copy files to EC2
-        uses: itynan/scp-action@master
+        uses: itynan/scp-action@prod
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -34,7 +34,7 @@ jobs:
           target: "/home/ec2-user/myenv/bin/activate"
 
       - name: Restart application
-        uses: itynan/AiCyberLabs@master
+        uses: itynan/AiCyberLabs@prod
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
