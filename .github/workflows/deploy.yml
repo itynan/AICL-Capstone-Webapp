@@ -33,13 +33,13 @@ jobs:
           EC2_HOST: ${{ secrets.HOST }}
           EC2_USERNAME: ${{ secrets.USERNAME }}
         run: |
-          scp -r * $EC2_USERNAME@$EC2_HOST:/home/ec2-user/
+          scp -v -r * $EC2_USERNAME@$EC2_HOST:/home/ec2-user/
       - name: Run Bash Script To Deploy App
         env:
           EC2_HOST: ${{ secrets.HOST }}
           EC2_USERNAME: ${{ secrets.USERNAME }}
         run: |
-          ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "chmod +x ./deploy.sh && ./deploy.sh"
+          ssh -v -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "chmod +x ./deploy.sh && ./deploy.sh"
       - name: Clean up SSH key 🚀
         if: always()
         run: rm -f ~/.ssh/id_rsa
