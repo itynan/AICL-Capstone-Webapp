@@ -10,7 +10,8 @@ from demo_ml_models.test2_password_gmm_clustering import (load_and_prepare_data,
 import numpy as np
 
 # Initialize the Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__,external_stylesheets = [dbc.themes.BOOTSTRAP],routes_pathname_prefix='/dash/',
+                requests_pathname_prefix='/dash/')
 
 # Load the dataset and fit the model
 features, y = load_and_prepare_data('demo_datasets/password_dataset.csv')
@@ -137,7 +138,8 @@ def update_output(n_clicks, selected_model, selected_dataset, password):
     else:
         return html.Div('Click "Run" to process.')
 
+server = app.server
 import os
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 7001))
-    app.run(debug=True, port=port)
+    port = int(os.environ.get("PORT",host='0.0.0.0', port=7001))
+    app.run_server(debug=True, port=port)
