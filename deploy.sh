@@ -20,7 +20,7 @@ sudo mv env .env
 
 # Install application dependencies from requirements.txt
 echo "Install application dependencies from requirements.txt"
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 
 # Update and install Nginx if not already installed
 #if ! command -v nginx > /dev/null; then
