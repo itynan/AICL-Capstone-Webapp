@@ -60,3 +60,5 @@ sudo pip3 install -r requirements.txt
 #echo "starting gunicorn"
 #sudo gunicorn --workers 3 --bind unix:myapp.sock  server:app --user www-data --group www-data --daemon
 #echo "started gunicorn "
+
+#NEED TO CONFIG GUNICORN & AND PYTHON VENV
