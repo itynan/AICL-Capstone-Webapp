@@ -1,0 +1,45 @@
+---
+name: Build and Deploy to AWS EC2
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH key and whitelist EC2 IP address
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AICYBERLABS }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      - name: Create .env file dynamically
+        env:
+          ENV: ${{ secrets.ENV }}
+          EC2_USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          echo "ENV=${ENV}" >> env
+          echo "EC2_USERNAME=${EC2_USERNAME}" >> env
+          la -la
+
+      - name: Copy files to remote server
+        env:
+          EC2_HOST: ${{ secrets.HOST }}
+          EC2_USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          scp -r * $EC2_USERNAME@$EC2_HOST:/home/ec2-user/
+      - name: Run Bash Script To Deploy App
+        env:
+          EC2_HOST: ${{ secrets.HOST }}
+          EC2_USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "chmod +x ./deploy.sh && ./deploy.sh"
+      - name: Clean up SSH key 🚀
+        if: always()
+        run: rm -f ~/.ssh/id_rsa

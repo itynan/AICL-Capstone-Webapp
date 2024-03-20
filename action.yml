@@ -1,36 +1,36 @@
----
-#test
-name: 'Deploy to EC2'
-description: 'Deploys files to an AWS EC2 instance'
-inputs:
-  host:
-    description: 'Host name or IP address of the EC2 instance'
-    required: true
-  username:
-    description: 'Username for SSH'
-    required: true
-  key:
-    description: 'SSH private key'
-    required: true
-  port:
-    description: 'SSH port'
-    required: false
-    default: '22'
-  source:
-    description: 'Source files to copy'
-    required: true
-  target:
-    description: 'Target directory on the EC2 instance'
-    required: true
-runs:
-  using: 'composite'
-  steps:
-    - name: Copy files to EC2
-      run: |
-        scp -i ${{ inputs.AICYBERLABS }} -P '22' -r './' 'ec2-user@3.15.32.33' '/home/ec2-user/var/www/myapp'
-      shell: bash
-
-    - name: Execute remote commands
-      run: |
-        ssh -i ${{ inputs.key }} -o StrictHostKeyChecking=no -p ${{ inputs.port }} ${{ inputs.username }}@${{ inputs.host }} 'bash -s' < ${{ inputs.script }}
-      shell: bash
+#---
+##test
+#name: 'Deploy to EC2'
+#description: 'Deploys files to an AWS EC2 instance'
+#inputs:
+#  host:
+#    description: 'Host name or IP address of the EC2 instance'
+#    required: true
+#  username:
+#    description: 'Username for SSH'
+#    required: true
+#  key:
+#    description: 'SSH private key'
+#    required: true
+#  port:
+#    description: 'SSH port'
+#    required: false
+#    default: '22'
+#  source:
+#    description: 'Source files to copy'
+#    required: true
+#  target:
+#    description: 'Target directory on the EC2 instance'
+#    required: true
+#runs:
+#  using: 'composite'
+#  steps:
+#    - name: Copy files to EC2
+#      run: |
+#        scp -i ${{ inputs.AICYBERLABS }} -P '22' -r './' 'ec2-user@3.15.32.33' '/home/ec2-user/var/www/myapp'
+#      shell: bash
+#
+#    - name: Execute remote commands
+#      run: |
+#        ssh -i ${{ inputs.key }} -o StrictHostKeyChecking=no -p ${{ inputs.port }} ${{ inputs.username }}@${{ inputs.host }} 'bash -s' < ${{ inputs.script }}
+#      shell: bash
