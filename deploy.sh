@@ -3,39 +3,39 @@
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
 sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
-sudo chown -R ec2-user:ec2-user /var/www/aicyberlabs-app/myenv
-
-echo "Deleting old app"
-sudo rm -rf /var/www/aicyberlabs-app
-
-echo "Creating app folder"
-sudo mkdir -p /var/www/aicyberlabs-app
-
-echo "Moving files to app folder"
-sudo mv * /var/www/aicyberlabs-app
-
-cd /var/www/aicyberlabs-app/
-sudo mv env .env
-
-sudo amazon-linux-extras install python3.7
-python3 -m venv myenv
-sleep 3
-source myenv/bin/activate
-
-sudo yum install python3-pip
-echo "Installing application dependencies from requirements.txt"
-pip install -r requirements.txt
-
-echo "Restarting Nginx"
-sudo systemctl restart nginx
-
-echo "Starting Gunicorn for webflow-fe-server"
-gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
-
-echo "Starting Gunicorn for dash-ml-app"
-gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3
-
-echo "Deployment completed successfully"
+#sudo chown -R ec2-user:ec2-user /var/www/aicyberlabs-app/myenv
+#
+#echo "Deleting old app"
+#sudo rm -rf /var/www/aicyberlabs-app
+#
+#echo "Creating app folder"
+#sudo mkdir -p /var/www/aicyberlabs-app
+#
+#echo "Moving files to app folder"
+#sudo mv * /var/www/aicyberlabs-app
+#
+#cd /var/www/aicyberlabs-app/
+#sudo mv env .env
+#
+#sudo amazon-linux-extras install python3.7
+#python3 -m venv myenv
+#sleep 3
+#source myenv/bin/activate
+#
+#sudo yum install python3-pip
+#echo "Installing application dependencies from requirements.txt"
+#pip install -r requirements.txt
+#
+#echo "Restarting Nginx"
+#sudo systemctl restart nginx
+#
+#echo "Starting Gunicorn for webflow-fe-server"
+#gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
+#
+#echo "Starting Gunicorn for dash-ml-app"
+#gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3
+#
+#echo "Deployment completed successfully"
 
 
 # Update and install Nginx if not already installed
