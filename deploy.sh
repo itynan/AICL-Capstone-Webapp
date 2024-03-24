@@ -3,7 +3,7 @@
 set -e
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
-mkdir -p /var/www/aicyberlabs-app/myenv
+sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
 sudo chown -R ec2-user:ec2-user /var/www/aicyberlabs-app/myenv
 
 echo "Deleting old app"
