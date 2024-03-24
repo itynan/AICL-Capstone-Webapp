@@ -1,50 +1,41 @@
 #!/bin/bash
 
-echo "Changing ownership of /var/www/aicyberlabs-app/myenv to ec2-user"
+set -e
+
+echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
+mkdir -p /var/www/aicyberlabs-app/myenv
 sudo chown -R ec2-user:ec2-user /var/www/aicyberlabs-app/myenv
 
-#set -e ends script at point of failure
-set -e
-echo "deleting old app"
-sudo rm -rf /var/www/
+echo "Deleting old app"
+sudo rm -rf /var/www/aicyberlabs-app
 
-echo "creating app folder"
+echo "Creating app folder"
 sudo mkdir -p /var/www/aicyberlabs-app
 
-echo "moving files to app folder"
-sudo mv  * /var/www/aicyberlabs-app
+echo "Moving files to app folder"
+sudo mv * /var/www/aicyberlabs-app
 
-# Navigate to the app directory
 cd /var/www/aicyberlabs-app/
 sudo mv env .env
 
-sudo yum install python3-venv
+sudo amazon-linux-extras install python3.7
 python3 -m venv myenv
 source myenv/bin/activate
 
-#py3 already installed
-#sudo apt-get update
-#echo "installing python and pip"
-#sudo apt-get install -y python3 python3-pip
-
-# Install application dependencies from requirements.txt
-#!/bin/bash
-sudo pip3 install gunicorn
 sudo yum install python3-pip
 echo "Installing application dependencies from requirements.txt"
-sudo pip3 install -r requirements.txt || { echo "Failed to install dependencies"; exit 1; }
+pip install -r requirements.txt
 
 echo "Restarting Nginx"
-sudo systemctl restart nginx || { echo "Failed to restart Nginx"; exit 1; }
+sudo systemctl restart nginx
 
 echo "Starting Gunicorn for webflow-fe-server"
-gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4 || { echo "Failed to start Gunicorn for webflow-fe-server"; exit 1; }
+gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
 
 echo "Starting Gunicorn for dash-ml-app"
-gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3 || { echo "Failed to start Gunicorn for dash-ml-app"; exit 1; }
+gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3
 
 echo "Deployment completed successfully"
-
 
 
 # Update and install Nginx if not already installed
