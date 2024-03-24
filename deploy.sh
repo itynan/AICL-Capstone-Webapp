@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#test
 set -e
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
