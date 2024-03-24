@@ -13,6 +13,10 @@ sudo mv  * /var/www/aicyberlabs-app
 cd /var/www/aicyberlabs-app/
 sudo mv env .env
 
+sudo yum install python3-venv
+python3 -m venv myenv
+source myenv/bin/activate
+
 #py3 already installed
 #sudo apt-get update
 #echo "installing python and pip"
