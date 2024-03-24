@@ -78,4 +78,4 @@ echo "Deployment completed successfully"
 #sudo gunicorn --workers 3 --bind unix:myapp.sock  server:app --user www-data --group www-data --daemon
 #echo "started gunicorn "
 
-#TODO: NEED TO CONFIG GUNICORN & AND PYTHON VENV asdasd
+#TODO: NEED TO CONFIG GUNICORN & AND PYTHON VENV
