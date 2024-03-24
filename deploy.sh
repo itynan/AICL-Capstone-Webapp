@@ -23,12 +23,22 @@ source myenv/bin/activate
 #sudo apt-get install -y python3 python3-pip
 
 # Install application dependencies from requirements.txt
-echo "Install application dependencies from requirements.txt"
-sudo pip3 install -r requirements.txt
-sudo systemctl restart nginx
-sleep 8
-gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
-gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3
+#!/bin/bash
+
+echo "Installing application dependencies from requirements.txt"
+sudo pip3 install -r requirements.txt || { echo "Failed to install dependencies"; exit 1; }
+
+echo "Restarting Nginx"
+sudo systemctl restart nginx || { echo "Failed to restart Nginx"; exit 1; }
+
+echo "Starting Gunicorn for webflow-fe-server"
+gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4 || { echo "Failed to start Gunicorn for webflow-fe-server"; exit 1; }
+
+echo "Starting Gunicorn for dash-ml-app"
+gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3 || { echo "Failed to start Gunicorn for dash-ml-app"; exit 1; }
+
+echo "Deployment completed successfully"
+
 
 
 # Update and install Nginx if not already installed
