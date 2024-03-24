@@ -26,6 +26,9 @@ source myenv/bin/activate
 echo "Install application dependencies from requirements.txt"
 sudo pip3 install -r requirements.txt
 sudo systemctl restart nginx
+sleep 8
+gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
+gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 3
 
 
 # Update and install Nginx if not already installed
