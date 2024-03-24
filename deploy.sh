@@ -25,6 +25,8 @@ source myenv/bin/activate
 # Install application dependencies from requirements.txt
 echo "Install application dependencies from requirements.txt"
 sudo pip3 install -r requirements.txt
+sudo systemctl restart nginx
+
 
 # Update and install Nginx if not already installed
 #if ! command -v nginx > /dev/null; then
