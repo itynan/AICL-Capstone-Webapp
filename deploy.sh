@@ -1,5 +1,5 @@
 #!/bin/bash
-#test
+#test - update root in nginx conf.d
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
 sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
@@ -28,6 +28,7 @@ pip install -r requirements.txt
 
 echo "Restarting Nginx"
 sudo systemctl restart nginx
+pip3 install gunicorn
 
 echo "Starting Gunicorn for webflow-fe-server"
 gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
