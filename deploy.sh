@@ -20,6 +20,7 @@ sudo mv env .env
 
 sudo amazon-linux-extras install python3.7
 python3 -m venv myenv
+sleep 3
 source myenv/bin/activate
 
 sudo yum install python3-pip
