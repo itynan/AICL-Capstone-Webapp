@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Changing ownership of /var/www/aicyberlabs-app/myenv to ec2-user"
+sudo chown -R ec2-user:ec2-user /var/www/aicyberlabs-app/myenv
+
+#set -e ends script at point of failure
+set -e
 echo "deleting old app"
 sudo rm -rf /var/www/
 
@@ -24,7 +29,8 @@ source myenv/bin/activate
 
 # Install application dependencies from requirements.txt
 #!/bin/bash
-
+sudo pip3 install gunicorn
+sudo yum install python3-pip
 echo "Installing application dependencies from requirements.txt"
 sudo pip3 install -r requirements.txt || { echo "Failed to install dependencies"; exit 1; }
 
