@@ -31,11 +31,11 @@ sudo systemctl restart nginx
 
 sleep 10
 echo "Starting Gunicorn for webflow-fe-server"
-cd /webflow_template/
+cd webflow_template/
 gunicorn -c gunicorn_config_port_5000.py webflow-fe-server:app --workers 3
 sleep 5
 echo "Starting Gunicorn for dash-ml-app"
-cd /dash/
+cd dash/
 gunicorn -c gunicorn_config_port_7001.py dash-ml-app:server --workers 4
 
 echo "Deployment completed successfully"
