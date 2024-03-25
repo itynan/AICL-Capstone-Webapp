@@ -24,7 +24,7 @@ source myenv_new/bin/activate
 
 echo "Installing application dependencies from requirements.txt"
 cd /var/www/aicyberlabs-app/
-sudo pip install -r requirements.txt
+pip install -r requirements.txt
 
 echo "Restarting Nginx"
 sudo systemctl restart nginx
