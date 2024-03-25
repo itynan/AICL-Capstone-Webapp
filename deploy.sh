@@ -17,7 +17,7 @@ sudo mv * /var/www/aicyberlabs-app
 cd /var/www/aicyberlabs-app/
 sudo mv env .env
 
-sudo amazon-linux-extras install python3.9
+#sudo amazon-linux-extras install python3.9
 python3.9 -m venv myenv_new
 source myenv_new/bin/activate
 
