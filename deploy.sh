@@ -28,7 +28,8 @@ pip install -r requirements.txt
 
 echo "Restarting Nginx"
 sudo systemctl restart nginx
-pip3 install gunicorn
+pip install gunicorn
+pip install flask
 
 echo "Starting Gunicorn for webflow-fe-server"
 gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
