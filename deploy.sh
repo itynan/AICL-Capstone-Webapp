@@ -23,6 +23,7 @@ python3.9 -m venv myenv_new
 source myenv_new/bin/activate
 
 echo "Installing application dependencies from requirements.txt"
+cd /var/www/aicyberlabs-app/
 sudo pip install -r requirements.txt
 
 echo "Restarting Nginx"
@@ -30,10 +31,12 @@ sudo systemctl restart nginx
 
 sleep 10
 echo "Starting Gunicorn for webflow-fe-server"
-gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 3
+cd /var/www/aicyberlabs-app/webflow_template/
+gunicorn -c gunicorn_config_port_5000.py webflow-fe-server:app --workers 3
 sleep 5
 echo "Starting Gunicorn for dash-ml-app"
-gunicorn -c /var/www/aicyberlabs-app/dash/gunicorn_config_port_7001.py dash-ml-app:server --workers 4
+cd /var/www/aicyberlabs-app/dash/
+gunicorn -c gunicorn_config_port_7001.py dash-ml-app:server --workers 4
 
 echo "Deployment completed successfully"
 
