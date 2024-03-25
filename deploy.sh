@@ -18,18 +18,15 @@ cd /var/www/aicyberlabs-app/
 sudo mv env .env
 
 sudo amazon-linux-extras install python3.9
-python3 -m venv myenv
-sleep 3
-source myenv/bin/activate
+python3.9 -m venv myenv_new
+source myenv_new/bin/activate
 
-sudo yum install python3-pip
 echo "Installing application dependencies from requirements.txt"
-pip install -r requirements.txt
+sudo pip install -r requirements.txt
 
 echo "Restarting Nginx"
 sudo systemctl restart nginx
-pip install gunicorn
-pip install flask
+
 
 echo "Starting Gunicorn for webflow-fe-server"
 gunicorn -c /var/www/aicyberlabs-app/webflow_template/gunicorn_config_port_5000.py webflow-fe-server:app --workers 4
