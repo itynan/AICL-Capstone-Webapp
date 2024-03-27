@@ -1,5 +1,5 @@
 #!/bin/bash
-#test5
+#test6
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
 sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
