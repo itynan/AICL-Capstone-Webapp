@@ -24,6 +24,8 @@ source myenv_new/bin/activate
 
 echo "Installing application dependencies from requirements.txt"
 cd /var/www/aicyberlabs-app/
+pip install gunicorn
+
 pip install -v -r requirements.txt
 
 echo "Restarting Nginx"
