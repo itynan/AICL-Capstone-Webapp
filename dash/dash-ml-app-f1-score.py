@@ -48,13 +48,13 @@ def evaluate_model(model, X_train, X_val, y_train, y_val):
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-# datasets = [f for f in os.listdir('./dash/demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
+datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
 
 
 #Get the absolute path of the directory where this script is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-datasets_dir = os.path.join(BASE_DIR, 'demo_datasets')
-datasets = [f for f in os.listdir(datasets_dir) if os.path.isfile(os.path.join(datasets_dir, f))]
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# datasets_dir = os.path.join(BASE_DIR, 'demo_datasets')
+# datasets = [f for f in os.listdir(datasets_dir) if os.path.isfile(os.path.join(datasets_dir, f))]
 
 
 app.layout = dbc.Container([
@@ -91,7 +91,7 @@ app.layout = dbc.Container([
 )
 def update_evaluation_results(n_clicks, selected_dataset):
     if n_clicks > 0 and selected_dataset:
-        data = load_dataset(f'./dash/demo_datasets/{selected_dataset}')
+        data = load_dataset(f'./demo_datasets/{selected_dataset}')
         X_train, X_val, X_test, y_train, y_val, y_test = split_dataset(data)
 
         models = {
