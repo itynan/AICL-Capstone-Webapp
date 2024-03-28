@@ -91,7 +91,7 @@ app.layout = dbc.Container([
 )
 def update_evaluation_results(n_clicks, selected_dataset):
     if n_clicks > 0 and selected_dataset:
-        data = load_dataset(f'./demo_datasets/{selected_dataset}')
+        data = load_dataset(f'./dash/demo_datasets/{selected_dataset}')
         X_train, X_val, X_test, y_train, y_val, y_test = split_dataset(data)
 
         models = {
