@@ -48,7 +48,19 @@ def evaluate_model(model, X_train, X_val, y_train, y_val):
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
+#datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
+
+import os
+
+# Get the absolute path of the directory where this script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the demo_datasets directory
+datasets_dir = os.path.join(BASE_DIR, 'demo_datasets')
+
+# List all files in the demo_datasets directory
+datasets = [f for f in os.listdir(datasets_dir) if os.path.isfile(os.path.join(datasets_dir, f))]
+
 
 app.layout = dbc.Container([
     dbc.Row([
