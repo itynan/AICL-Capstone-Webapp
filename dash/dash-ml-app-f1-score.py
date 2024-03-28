@@ -88,14 +88,14 @@ def update_evaluation_results(n_clicks, selected_dataset):
         X_train, X_val, X_test, y_train, y_val, y_test = split_dataset(data)
 
         models = {
-            "Logistic Regression": LogisticRegression(),
-            "Gaussian Naive Bayes": GaussianNB(),
-            "Support Vector Machine": SVC(),
+           # "Logistic Regression": LogisticRegression(),
+          #  "Gaussian Naive Bayes": GaussianNB(),
+           # "Support Vector Machine": SVC(),
             "K-Nearest Neighbors": KNeighborsClassifier(),
-            "Decision Tree": DecisionTreeClassifier(),
-            "Random Forest": RandomForestClassifier(),
-            "Gradient Boosting": GradientBoostingClassifier(),
-            "AdaBoost": AdaBoostClassifier()
+          #  "Decision Tree": DecisionTreeClassifier(),
+          #  "Random Forest": RandomForestClassifier(),
+         #   "Gradient Boosting": GradientBoostingClassifier(),
+           # "AdaBoost": AdaBoostClassifier()
         }
 
          # Model descriptions
