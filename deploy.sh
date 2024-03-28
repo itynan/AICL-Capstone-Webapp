@@ -1,6 +1,6 @@
 #!/bin/bash
 #test6
-sudo pgrep -f "/home/ec2-user/myenv_new/bin/python3.9 /home/ec2-user/myenv_new/bin/gunicorn" | sudo xargs kill -9
+sudo pgrep -f "gunicorn" | sudo xargs kill -9
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
 sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
@@ -41,7 +41,7 @@ cd dash/
 
 #gunicorn -c gunicorn_config_port_5000.py webflow-fe-server:app --workers 4 &
 #gunicorn -c gunicorn_config_port_7001.py dash-ml-app:server --workers 4 &
-gunicorn -c conf_port_7002.py dash-ml-app-f1-score:server --workers 8 &
+sudo gunicorn -c conf_port_7002.py dash-ml-app-f1-score:server --workers 8 &
 
 echo "Deployment completed successfully"
 
