@@ -48,18 +48,17 @@ def evaluate_model(model, X_train, X_val, y_train, y_val):
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-#datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
+datasets = [f for f in os.listdir('/dash/demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
 
-import os
 
 # Get the absolute path of the directory where this script is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the absolute path to the demo_datasets directory
-datasets_dir = os.path.join(BASE_DIR, 'demo_datasets')
+#datasets_dir = os.path.join(BASE_DIR, 'demo_datasets')
 
 # List all files in the demo_datasets directory
-datasets = [f for f in os.listdir(datasets_dir) if os.path.isfile(os.path.join(datasets_dir, f))]
+#datasets = [f for f in os.listdir(datasets_dir) if os.path.isfile(os.path.join(datasets_dir, f))]
 
 
 app.layout = dbc.Container([
@@ -100,14 +99,14 @@ def update_evaluation_results(n_clicks, selected_dataset):
         X_train, X_val, X_test, y_train, y_val, y_test = split_dataset(data)
 
         models = {
-           # "Logistic Regression": LogisticRegression(),
-          #  "Gaussian Naive Bayes": GaussianNB(),
-           # "Support Vector Machine": SVC(),
+            "Logistic Regression": LogisticRegression(),
+            "Gaussian Naive Bayes": GaussianNB(),
+            "Support Vector Machine": SVC(),
             "K-Nearest Neighbors": KNeighborsClassifier(),
-          #  "Decision Tree": DecisionTreeClassifier(),
-          #  "Random Forest": RandomForestClassifier(),
-         #   "Gradient Boosting": GradientBoostingClassifier(),
-           # "AdaBoost": AdaBoostClassifier()
+            "Decision Tree": DecisionTreeClassifier(),
+            "Random Forest": RandomForestClassifier(),
+            "Gradient Boosting": GradientBoostingClassifier(),
+            "AdaBoost": AdaBoostClassifier()
         }
 
          # Model descriptions
