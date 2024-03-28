@@ -1,5 +1,6 @@
 #!/bin/bash
 #test6
+sudo pgrep -f "/home/ec2-user/myenv_new/bin/python3.9 /home/ec2-user/myenv_new/bin/gunicorn" | sudo xargs kill -9
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
 sudo mkdir -v -p /var/www/aicyberlabs-app/myenv
@@ -25,7 +26,6 @@ source myenv_new/bin/activate
 echo "Installing application dependencies from requirements.txt"
 cd /var/www/aicyberlabs-app/
 pip install gunicorn
-sudo pgrep -f "/home/ec2-user/myenv_new/bin/python3.9 /home/ec2-user/myenv_new/bin/gunicorn" | sudo xargs kill -9
 pip install -v -r requirements.txt
 
 echo "Restarting Nginx"
