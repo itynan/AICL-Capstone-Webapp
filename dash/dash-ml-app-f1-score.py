@@ -1,4 +1,4 @@
-# Required libraries for Dash and data handling
+# Required libraries for Dash and data handling1
 import dash
 from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
