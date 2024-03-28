@@ -141,6 +141,6 @@ def update_evaluation_results(n_clicks, selected_dataset):
 
 server=app.server
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT",7002))
-    #port = int(os.environ.get("PORT",host='0.0.0.0', port=7002))
+    #port = int(os.environ.get("PORT",7002))
+    port = int(os.environ.get("PORT",host='0.0.0.0', port=7002))
     app.run_server(debug=True, port=port)
