@@ -58,7 +58,8 @@ datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.j
 
 
 app.layout = dbc.Container([
-    dbc.Col([
+    dbc.Row([
+        dbc.Col([
             html.H2("Understanding the F1 Score Evaluation"),
             html.P("""
                 The F1 score is a measure of a test's accuracy that considers both the precision and recall to compute the score. 
