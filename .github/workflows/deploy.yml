@@ -16,13 +16,13 @@ jobs:
       - name: Set up SSH key and whitelist EC2 IP address
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.AICYBERLABS }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.KEYTEST }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan ${{ secrets.HOST16GB }} >> ~/.ssh/known_hosts
+          ssh-keyscan ${{ secrets.HOSTTEST }} >> ~/.ssh/known_hosts
       - name: Create .env file dynamically
         env:
           ENV: ${{ secrets.ENV }}
-          EC2_USERNAME: ${{ secrets.USERNAME }}
+          EC2_USERNAME: ${{ secrets.USERNAMETEST }}
         run: |
           echo "ENV=${ENV}" >> env
           echo "EC2_USERNAME=${EC2_USERNAME}" >> env
@@ -30,14 +30,14 @@ jobs:
 
       - name: Copy files to remote server
         env:
-          EC2_HOST: ${{ secrets.HOST16GB }}
-          EC2_USERNAME: ${{ secrets.USERNAME }}
+          EC2_HOST: ${{ secrets.HOSTTEST }}
+          EC2_USERNAME: ${{ secrets.USERNAMETEST }}
         run: |
           scp -v -r * $EC2_USERNAME@$EC2_HOST:/home/ec2-user/
       - name: Run Bash Script To Deploy App
         env:
-          EC2_HOST: ${{ secrets.HOST16GB }}
-          EC2_USERNAME: ${{ secrets.USERNAME }}
+          EC2_HOST: ${{ secrets.HOSTTEST }}
+          EC2_USERNAME: ${{ secrets.USERNAMETEST }}
         run: |
           ssh -v -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_HOST "chmod +x ./deploy.sh && ./deploy.sh"
       - name: Clean up SSH key 🚀
