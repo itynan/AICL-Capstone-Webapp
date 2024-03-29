@@ -11,6 +11,12 @@ def datasets():
 @app.route('/f1models.html')
 def f1models():
     return render_template('f1models.html')
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+@app.route('/schema.html')
+def schema():
+    return render_template('schema.html')
 
 
 if __name__ == '__main__':
