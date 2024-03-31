@@ -47,7 +47,7 @@ echo "Deployment completed successfully"
 
 sleep 45
 
-./deploy.sh
+sudo sh -xv ./deploy.sh
 
 
 # Update and install Nginx if not already installed
