@@ -17,7 +17,9 @@ def about():
 @app.route('/schema.html')
 def schema():
     return render_template('schema.html')
-
+@app.route('/roadmap.html')
+def roadmap():
+    return render_template('roadmap.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
