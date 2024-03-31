@@ -1,4 +1,8 @@
 #!/bin/bash
+aicyberlabs-dir = /var/www/aicyberlabs-app
+dash-dir = /var/www/aicyberlabs-app/dash
+tmp-dir = /tmp/
+
 #test8
 sudo pgrep -f "gunicorn" | sudo xargs kill -9
 
@@ -47,7 +51,9 @@ echo "Deployment completed successfully"
 
 sleep 45
 
-sudo sh -xv ./deploy.sh
+cd $aicyberlabs-dir
+sudo cp $tmp-dir/test_deploy.sh .
+sudo sh -xv ./test_deploy.sh
 
 
 # Update and install Nginx if not already installed
