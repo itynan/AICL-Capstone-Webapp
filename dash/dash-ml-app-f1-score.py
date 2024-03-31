@@ -60,6 +60,19 @@ datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.j
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
+            html.H2("Understanding the F1 Score Evaluation"),
+            html.P("""
+                The F1 score is a measure of a test's accuracy that considers both the precision and recall to compute the score. 
+                It is the harmonic mean of the precision and recall, where an F1 score reaches its best value at 1 (perfect precision and recall) 
+                and worst at 0. This score is particularly useful in the context of binary classifications with uneven class distributions, 
+                such as in cybersecurity use cases for analyzing malicious (positive class) and non-malicious (negative class) inputs. 
+                A high F1 score indicates a robust model that performs well in identifying both classes accurately, 
+                minimizing false positives and false negatives, which is crucial for effective threat detection.""",
+                className="mb-4"),
+        ])
+    ], className="mb-5"),
+    dbc.Row([
+        dbc.Col([
             html.H4("Dataset Selection"),
             dcc.Dropdown(
                 id='dataset-dropdown',

@@ -1,0 +1,36 @@
+.schema-section{
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 30px;
+    background-color: var(--neutral--800);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

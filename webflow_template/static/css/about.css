@@ -1,0 +1,41 @@
+.about-us-section {
+    overflow: hidden; /* Clear floats */
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.meet-team {
+    margin-bottom: 30px;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px; /* Add some space between team members */
+}
+
+.team-member-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.team-member-info {
+    overflow: hidden; /* Clear floats */
+    text-align: center;
+    font-size: 16px;
+}
+
+.copyright {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
