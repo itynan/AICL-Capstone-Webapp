@@ -1,5 +1,5 @@
 #!/bin/bash
-#test6
+#test7
 sudo pgrep -f "gunicorn" | sudo xargs kill -9
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
