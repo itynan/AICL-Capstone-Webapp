@@ -41,9 +41,13 @@ cd dash/
 
 #gunicorn -c gunicorn_config_port_5000.py webflow-fe-server:app --workers 4 &
 #gunicorn -c gunicorn_config_port_7001.py dash-ml-app:server --workers 4 &
-sudo gunicorn -c conf_port_7002.py dash-ml-app-f1-score:server --workers 8 &
+#sudo gunicorn -c conf_port_7002.py dash-ml-app-f1-score:server --workers 8 &
 
 echo "Deployment completed successfully"
+
+sleep 45
+
+./deploy.sh
 
 
 # Update and install Nginx if not already installed
