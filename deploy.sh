@@ -1,7 +1,7 @@
 #!/bin/bash
 aicyberlabs-dir = /var/www/aicyberlabs-app
 dash-dir = /var/www/aicyberlabs-app/dash
-tmp-dir = /tmp/
+tmp-dir = /tmp
 
 #test8
 sudo pgrep -f "gunicorn" | sudo xargs kill -9
