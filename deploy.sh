@@ -3,7 +3,7 @@
 #dash-dir = /var/www/aicyberlabs-app/dash
 #tmp-dir = /tmp
 
-#test8
+#test9
 sudo pgrep -f "gunicorn" | sudo xargs kill -9
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
@@ -52,8 +52,8 @@ echo "Deployment completed successfully"
 sleep 45
 
 
-sudo cp /tmp/test_deploy.sh /var/www/aicyberlabs-app/
-sudo sh -xv /var/www/aicyberlabs-app/test_deploy.sh
+sudo cp /tmp/test_deploy2.sh /var/www/aicyberlabs-app/
+sudo sh -xv /var/www/aicyberlabs-app/test_deploy2.sh
 
 
 # Update and install Nginx if not already installed
