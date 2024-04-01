@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.mixture import GaussianMixture
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_score, recall_score, f1_score
 import re
 import string
 
@@ -92,6 +94,15 @@ def calculate_aggregate_features(dataframe, labels):
         'weak': avg_weak
     }
 
+def training_data_split(features, labels):
+    # Split into Training, Development, and Test Sets
+    X_train, X_temp, y_train, y_temp = train_test_split(features, labels, test_size=0.4, random_state=42)
+    X_dev, X_test, y_dev, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
+    return X_train, X_dev, X_test, y_train, y_dev, y_test
 
-def training_data_split():
-    return None
+def f1_precision_recall(y_true, y_pred):
+    # Calculate F1, Precision, and Recall
+    precision = precision_score(y_true, y_pred)
+    recall = recall_score(y_true, y_pred)
+    f1 = f1_score(y_true, y_pred)
+    return f1, precision, recall
