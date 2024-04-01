@@ -3,7 +3,7 @@
 #dash-dir = /var/www/aicyberlabs-app/dash
 #tmp-dir = /tmp
 
-#test9
+#test10
 sudo pgrep -f "gunicorn" | sudo xargs kill -9
 
 echo "Creating and changing ownership of /var/www/aicyberlabs-app/myenv"
