@@ -91,3 +91,7 @@ def calculate_aggregate_features(dataframe, labels):
         'strong': avg_strong,
         'weak': avg_weak
     }
+
+
+def training_data_split():
+    return None
