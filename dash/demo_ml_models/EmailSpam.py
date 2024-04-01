@@ -8,7 +8,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import metrics
 import shap
-from lime.lime_text import LimeTextExplainer
 
 
 def load_data(file_path):
