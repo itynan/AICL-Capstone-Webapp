@@ -7,8 +7,9 @@ import plotly.express as px
 import pandas as pd
 from demo_ml_models.test2_password_gmm_clustering import (load_and_prepare_data, fit_gmm_model, evaluate_password_strength_and_get_features, calculate_aggregate_features, training_data_split)
 from demo_ml_models.Suspicious_websites_model import TextModel
+
 import numpy as np
-#from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.metrics import f1_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 from lime.lime_text import LimeTextExplainer
 
@@ -19,6 +20,7 @@ gmm_model = fit_gmm_model(features)
 
 # Initialize use case 2 sus web apps dataset
 text_model = TextModel('demo_datasets/suspicious_webapps_dataset.csv')
+
 text_model.load_and_prepare_data()  # This prepares your data
 text_model.train_model()  # Ensure this line is added to train your model
 
@@ -213,7 +215,8 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
             # Dataset split visualization:
             split_fig_text = go.Figure(data=[
                 go.Pie(labels=['Train', 'Development', 'Test'],
-                       values=[text_model.X_train.shape[0], text_model.X_dev.shape[0], text_model.X_test.shape[0]],  # changed from len() to .shape[0]
+                       values=[text_model.X_train.shape[0], text_model.X_dev.shape[0], text_model.X_test.shape[0]],
+                       # changed from len() to .shape[0]
                        hole=.5)
             ])
 
@@ -221,6 +224,8 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
                 title_text='Suspicious String Dataset Split',
                 annotations=[dict(text='String Dataset', x=0.5, y=0.5, font_size=15, showarrow=False)]
             )
+        except Exception as e:
+            return html.Div(f'Error in dataset split visualization: {e}')
 
             # Continue adding the rest of your visualization logic here
             # Update label distribution visualization
@@ -267,14 +272,17 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
                 type="default"
             )
 
-            lime_fig, probas_dict = text_model.generate_lime_explanation(malicious_string)
+            try:
+                lime_fig, probas_dict = text_model.generate_lime_explanation(malicious_string)
 
-            # Use the extracted probabilities for display
-            probabilities_display = html.Div([
-                html.P([html.B("Model Prediction:")]),
-                html.P(f"Normal website probability: {probas_dict['Normal']}%"),
-                html.P(f"Suspicious probability: {probas_dict['Suspicious']}%")
-            ])
+                # Use the extracted probabilities for display
+                probabilities_display = html.Div([
+                    html.P([html.B("Model Prediction:")]),
+                    html.P(f"Normal website probability: {probas_dict['Normal']}%"),
+                    html.P(f"Suspicious probability: {probas_dict['Suspicious']}%")
+                ])
+            except Exception as e:
+                return html.Div(f'Error in LIME explanation generation: {e}')
 
             # Evaluate the model
             evaluation_metrics = text_model.evaluate_model()

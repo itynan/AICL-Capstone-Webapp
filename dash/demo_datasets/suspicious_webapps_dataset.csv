@@ -75,7 +75,6 @@ $null,Suspicious
 %2A%28%7C%28mail%3D%2A%29%29,Suspicious
 %2A%28%7C%28objectclass%3D%2A%29%29,Suspicious
 %2A%7C,Suspicious
-%2C,Suspicious
 %2e%2e%2f,Suspicious
 %3C,Suspicious
 %3C%3F,Suspicious
