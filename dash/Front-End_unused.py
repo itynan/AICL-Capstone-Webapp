@@ -13,12 +13,12 @@ from sklearn.model_selection import train_test_split
 from lime.lime_text import LimeTextExplainer
 
 
-# Load the dataset and fit the model once, outside of the callback to avoid reloading on every callback
-features, y = load_and_prepare_data('demo_datasets/password_dataset.csv')
+# Load the dataset and fit the model once, outside the callback to avoid reloading on every callback
+features, y = load_and_prepare_data('/demo_datasets/password_dataset.csv')
 gmm_model = fit_gmm_model(features)
 
 # Initialize use case 2 sus web apps dataset
-text_model = TextModel('demo_datasets/suspicious_webapps_dataset.csv')
+text_model = TextModel('/demo_datasets/suspicious_webapps_dataset.csv')
 text_model.load_and_prepare_data()  # This prepares your data
 text_model.train_model()  # Ensure this line is added to train your model
 
@@ -67,7 +67,7 @@ app.layout = dbc.Container([
     dbc.Row([  # This row is for the graph visualization
         dbc.Col(id='graph-container', className="mt-3 w-100"),
     ]),
-], fluid=True, style={'backgroundColor': '#f0f0f0'})  # Add the style parameter here)
+], fluid=True, style={'backgroundColor': '#f0f0f0'})  # Add the style parameter here
 @app.callback(
     Output('output-container', 'children'),
     [Input('submit-val', 'n_clicks')],
@@ -108,7 +108,7 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
             )
 
             # Load all dataset features and their GMM cluster assignments
-            dataset_features, _ = load_and_prepare_data('demo_datasets/password_dataset.csv')
+            dataset_features, _ = load_and_prepare_data('/demo_datasets/password_dataset.csv')
 
             all_cluster_labels = gmm_model.predict(dataset_features)
 
@@ -116,7 +116,7 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
             cluster_fig = go.Figure()
 
             # Visualization for label distribution
-            original_data = pd.read_csv('demo_datasets/password_dataset.csv')
+            original_data = pd.read_csv('/demo_datasets/password_dataset.csv')
             label_fig = px.bar(original_data['Label'].value_counts(), title='Label Distribution')
 
             # Now process the random sample
@@ -248,7 +248,7 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
             )
 
             # Now process the random sample from dataset for display
-            original_data = pd.read_csv('data_datasets/suspicious_webapps_dataset.csv')
+            original_data = pd.read_csv('/demo_datasets/suspicious_webapps_dataset.csv')
             sample_data = original_data.sample(15)  # Get random sample
             sample_table = dash_table.DataTable(
                 data=sample_data.to_dict('records'),
@@ -308,6 +308,10 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
 
     else:
         return html.Div('Click "Run" to process.')
+
+
+#if __name__ == '__main__':
+#    app.run_server(debug=True)
 
 import os
 server=app.server
