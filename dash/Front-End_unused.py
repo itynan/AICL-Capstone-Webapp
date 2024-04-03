@@ -317,9 +317,9 @@ def update_output(n_clicks, selected_model, selected_dataset, malicious_string):
     else:
         return html.Div('Click "Run" to process.')
 
-import os
-server=app.server
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT",7003))
-    #port = int(os.environ.get("PORT",host='0.0.0.0', port=7002))
-    app.run_server(debug=True, port=port)
+# import os
+# server=app.server
+# if __name__ == '__main__':
+#     port = int(os.environ.get("PORT",7003))
+#     #port = int(os.environ.get("PORT",host='0.0.0.0', port=7002))
+#     app.run_server(debug=True, port=port)
