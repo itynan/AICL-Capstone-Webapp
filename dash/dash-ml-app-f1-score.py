@@ -62,12 +62,13 @@ app.layout = dbc.Container([
         dbc.Col([
             html.H2("Understanding the F1 Score Evaluation"),
             html.P("""
-                The F1 score is a measure of a test's accuracy that considers both the precision and recall to compute the score. 
-                It is the harmonic mean of the precision and recall, where an F1 score reaches its best value at 1 (perfect precision and recall) 
-                and worst at 0. This score is particularly useful in the context of binary classifications with uneven class distributions, 
-                such as in cybersecurity use cases for analyzing malicious (positive class) and non-malicious (negative class) inputs. 
-                A high F1 score indicates a robust model that performs well in identifying both classes accurately, 
-                minimizing false positives and false negatives, which is crucial for effective threat detection.""",
+                The F1 score helps us understand how well a test works by looking at it's precision (how many selected items are relevant) and 
+                recall (how many relevant items are selected). It combines these two measures into a single number that ranges from  
+                0 (worst) to 1 (best), showing us how accurate the test is.  This score is especially helpful for tasks like figuring out if 
+                something is a security threat or not, where it's important to accurately identify threats without mistakenly 
+                labeling safe items as dangerous.  A high F1 score means the model is really good at catching threats correctly and not 
+                missing them or getting too many false alarms.  Of course, no method is flawless, so we encourage running your own tests on the 
+                model and thoroughly explore the dataset for bias or other imbalanced factors that might impact performance.""",
                 className="mb-4"),
         ])
     ], className="mb-5"),
