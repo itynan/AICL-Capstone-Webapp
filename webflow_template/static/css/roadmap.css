@@ -19,7 +19,7 @@
   display: inline-block; /* Ensure the image behaves like an inline element */
 }
 
-h2 {
+h2, h1 {
 font-size: 32px;
 color: #333;
 margin-bottom: 20px;
