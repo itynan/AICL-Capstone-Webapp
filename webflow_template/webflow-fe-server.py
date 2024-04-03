@@ -36,5 +36,6 @@ def coming():
 def pricing():
     return render_template('pricing.html')
 
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
