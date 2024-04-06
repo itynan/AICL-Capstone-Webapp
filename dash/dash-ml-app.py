@@ -49,7 +49,7 @@ app.layout = dbc.Container([
                 id='model-dropdown',
                 options=[
                     {'label': 'Password Strength Evaluator Model (GMM clustering)', 'value': 'Model1'},
-                    {'label': 'Suspicious webapp Strings', 'value': 'Model2'}
+                    {'label': 'Logistics Regression Model', 'value': 'Model2'}
                 ],
                 placeholder="Select a Model",
                 value='Model1'
