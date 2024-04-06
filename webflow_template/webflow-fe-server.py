@@ -35,6 +35,9 @@ def coming():
 @app.route('/pricing.html')
 def pricing():
     return render_template('pricing.html')
+@app.route('/future-integration.html')
+def integrate():
+    return render_template('future-integration.html')
 
 
 if __name__ == '__main__':
