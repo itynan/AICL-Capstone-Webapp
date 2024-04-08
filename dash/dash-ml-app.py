@@ -57,7 +57,7 @@ app.layout = dbc.Container([
         ], body=True, className="mt-3 w-100")),
     ]),
     dbc.Row([
-        dbc.Col(dbc.Input(id='malicious-string', type='text', placeholder="Enter a Password", className="mt-3 w-100")),
+        dbc.Col(dbc.Input(id='malicious-string', type='text', placeholder="Enter Your Interactive Cyber Input", className="mt-3 w-100")),
     ]),
     dbc.Row([
         dbc.Col(html.Button('Run', id='submit-val', n_clicks=0, className="btn mt-3 w-100",

@@ -2,3 +2,50 @@
     border-left: 1px solid #37446b; /* Adjust color as needed */
     height: 50px; /* Adjust height as needed */
 }
+
+.text-16 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+.text-14 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+.new-table-row {
+    min-height: 48px;
+    min-width: 400px;
+    grid-column-gap: 10px;
+    border-bottom: .6px solid var(--neutral--600);
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: -.6px;
+    padding: 12px 28px;
+    display: grid;
+    position: relative;
+}
+
+.new-table-row::after {
+    content: ''; /* Required for the pseudo-element */
+    position: absolute;/* Position relative to the grid container */
+    top: 0; /* Align with the top of the grid container */
+    bottom: 0; /* Align with the bottom of the grid container */
+    width: 1px; /* Width of the line */
+    background-color: var(--neutral--600); /* Color of the line */
+    left: 40%; /* Position the line at the middle of the grid gap */
+    transform: translateX(-50%);
+}
+
+.new-table-row.table-header {
+    min-height: 28px;
+    padding-top: 0;
+    padding-bottom: 16px;
+}
+
+.text-towards-line {
+    padding-right: 200px;
+}
