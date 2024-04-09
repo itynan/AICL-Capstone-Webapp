@@ -11,9 +11,6 @@ from demo_ml_models.test2_password_gmm_clustering import (load_and_prepare_data,
                                                           evaluate_password_strength_and_get_features, calculate_aggregate_features, training_data_split)
 from demo_ml_models.Suspicious_websites_model import TextModel
 
-# Initialize the Dash app
-app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP],routes_pathname_prefix='/dash/',
-                requests_pathname_prefix='/dash/')
 
 # Load the dataset and fit the model once, outside the callback to avoid reloading on every callback
 features, y = load_and_prepare_data('demo_datasets/password_dataset.csv')
@@ -28,7 +25,7 @@ text_model.train_model()  # Ensure this line is added to train your model
 aggregate_features = calculate_aggregate_features(features, y)
 
 # Initialize the Dash app with Bootstrap
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],routes_pathname_prefix='/dash1/',requests_pathname_prefix='/dash1/')
 app.layout = dbc.Container([
     # dbc.Row([
     #     dbc.Col(html.Img(src='/assets/full_AI_secops.png', height='100px'), width={"size": 6, "offset": 3}),  # Adjust 'height' as needed and center the logo

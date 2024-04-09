@@ -46,7 +46,7 @@ def evaluate_model(model, X_train, X_val, y_train, y_val):
     return precision, recall, f1
 
 # Initialize Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],routes_pathname_prefix='/f1score/',requests_pathname_prefix='/f1score/')
 
 datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.join('./demo_datasets', f))]
 
