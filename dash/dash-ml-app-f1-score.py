@@ -66,13 +66,13 @@ app.layout = dbc.Container([
                 className="mb-4"),
         ]),
         dbc.Col([
-            html.H2("What is a Machine Learning Model?"),
+            html.H2("Machine Learning Model?"),
             html.P("""
                 A model is an algorithm that learns patterns from your selected dataset to make predictions or decisions without being explicitly programmed.""",
                 className="mb-4"),
         ]),
         dbc.Col([
-            html.H2("F1 Score"),
+            html.H2("Why F1 Score?"),
             html.P("""
                 The F1 score is useful because it evaluates the accuracy of a test by considering its ability to minimize false positives.""",
                 className="mb-4"),
