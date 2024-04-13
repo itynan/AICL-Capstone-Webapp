@@ -60,15 +60,21 @@ datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.j
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
-            html.H2("Understanding the F1 Score Evaluation"),
+            html.H2("Heading 1"),
             html.P("""
-                The F1 score helps us understand how well a test works by looking at it's precision (how many selected items are relevant) and 
-                recall (how many relevant items are selected). It combines these two measures into a single number that ranges from  
-                0 (worst) to 1 (best), showing us how accurate the test is.  This score is especially helpful for tasks like figuring out if 
-                something is a security threat or not, where it's important to accurately identify threats without mistakenly 
-                labeling safe items as dangerous.  A high F1 score means the model is really good at catching threats correctly and not 
-                missing them or getting too many false alarms.  Of course, no method is flawless, so we encourage running your own tests on the 
-                model and thoroughly explore the dataset for bias or other imbalanced factors that might impact performance.""",
+                Text here for heading 1""",
+                className="mb-4"),
+        ]),
+        dbc.Col([
+            html.H2("Heading 2"),
+            html.P("""
+                Text here for heading 2.""",
+                className="mb-4"),
+        ]),
+        dbc.Col([
+            html.H2("Heading 3"),
+            html.P("""
+                Text here for heading 3""",
                 className="mb-4"),
         ])
     ], className="mb-5"),
