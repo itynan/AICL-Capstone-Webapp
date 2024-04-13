@@ -60,21 +60,21 @@ datasets = [f for f in os.listdir('./demo_datasets') if os.path.isfile(os.path.j
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
-            html.H2("Heading 1"),
+            html.H2("Start with your Dataset!"),
             html.P("""
-                Text here for heading 1""",
+                A dataset is a collection of data used to train, test, and validate models.""",
                 className="mb-4"),
         ]),
         dbc.Col([
-            html.H2("Heading 2"),
+            html.H2("What is a Machine Learning Model?"),
             html.P("""
-                Text here for heading 2.""",
+                A model is an algorithm that learns patterns from your selected dataset to make predictions or decisions without being explicitly programmed.""",
                 className="mb-4"),
         ]),
         dbc.Col([
-            html.H2("Heading 3"),
+            html.H2("F1 Score"),
             html.P("""
-                Text here for heading 3""",
+                The F1 score is useful because it evaluates the accuracy of a test by considering its ability to minimize false positives.""",
                 className="mb-4"),
         ])
     ], className="mb-5"),
